@@ -6,4 +6,9 @@ const input = loadFile("./input.txt")
 
 const answer1 = input.filter((x, ind) => x > input[ind - 1]).length;
 
-showAnswers([answer1]);
+const slidingWindow = input.map((x, i) => x + input[i + 1] + input[i + 2]);
+const answer2 = slidingWindow.filter(
+  (x, ind) => x > slidingWindow[ind - 1]
+).length;
+
+showAnswers([answer1, answer2]);
