@@ -12,3 +12,5 @@ const answer2 = slidingWindow.filter(
 ).length;
 
 showAnswers([answer1, answer2]);
+
+export { answer1, answer2 };
