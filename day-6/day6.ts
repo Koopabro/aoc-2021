@@ -25,7 +25,6 @@ const answer2 = (input: any[], maxDays: number) => {
     const bevallenVissen: number = shift != undefined ? shift : 0;
     fishLifeTime[8] = bevallenVissen;
     fishLifeTime[6] += bevallenVissen;
-    console.log(bevallenVissen);
   }
   return fishLifeTime.reduce((a, b) => a + b);
 };
