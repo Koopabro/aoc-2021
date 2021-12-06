@@ -19,5 +19,5 @@ test("uses the first method to transverse", () => {
 });
 
 test("uses the second method to transverse", () => {
-  expect(answer2(input)).toBe(X);
+  expect(answer2(input)).toBe(230);
 });

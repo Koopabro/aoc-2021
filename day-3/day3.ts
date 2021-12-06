@@ -1,3 +1,4 @@
+import { parse } from "path/posix";
 import loadFile from "../libs/loadFile";
 import showAnswers from "../libs/showAnswer";
 const input = loadFile("./input.txt")
@@ -23,14 +24,37 @@ const answer1 = (input: any[]): number => {
 };
 
 const answer2 = (input: any[]): number => {
-  const mostCommon = (index: number): number =>
-    input.map((x) => x[index]).reduce((acc, cur) => acc + cur) >
-    input.length / 2
-      ? 1
-      : 0;
+  let oxygenRatings = [...input];
+  let co2Ratings = [...input];
 
-  const oxygenRating = parseInt(oxygenFilter.join(""), 2);
-  return oxygenRating;
+  //oxy
+  let index = 0;
+  while (oxygenRatings.length > 1) {
+    const mostCommon =
+      oxygenRatings.map((x) => x[index]).reduce((a, b) => a + b) /
+        oxygenRatings.length >=
+      0.5
+        ? 1
+        : 0;
+    oxygenRatings = oxygenRatings.filter((x) => x[index] === mostCommon);
+    index++;
+  }
+
+  //co
+  index = 0;
+  while (co2Ratings.length > 1) {
+    const leastCommon =
+      co2Ratings.map((x) => x[index]).reduce((a, b) => a + b) /
+        co2Ratings.length >=
+      0.5
+        ? 0
+        : 1;
+    co2Ratings = co2Ratings.filter((x) => x[index] === leastCommon);
+    index++;
+  }
+  return (
+    parseInt(oxygenRatings[0].join(""), 2) * parseInt(co2Ratings[0].join(""), 2)
+  );
 };
 
 showAnswers([answer1(input), answer2(input)]);
