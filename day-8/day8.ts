@@ -48,7 +48,7 @@ const answer2 = (input: any[]) => {
             if (four.every((x) => cmpNmb.includes(x))) {
               return 9;
             } else {
-              return 7;
+              return 0;
             }
           } else {
             return 6;
